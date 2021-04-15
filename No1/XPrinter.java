@@ -3,15 +3,8 @@ public class XPrinter{
     Integer i, j, k;
 
     for(i=1; i<=5; i++){
-      for(j=1; j<=5; j++){
-        if(i == j){
-          System.out.printf("X");
-        }else{
-          System.out.printf(".");
-      }
-      }
-      for(k=5; k>0; k--){
-        if(i == k){
+      for(j=1; j<=10; j++){
+        if(i == j || i == 11-j){
           System.out.printf("X");
         }else{
           System.out.printf(".");
@@ -20,16 +13,9 @@ public class XPrinter{
       System.out.printf("%n");
     }
 
-    for(i=1; i<=5; i++){
-      for(j=5; j>0; j--){
-        if(i == j){
-          System.out.printf("X");
-        }else{
-          System.out.printf(".");
-      }
-      }
-      for(k=1; k<=5; k++){
-        if(i == k){
+    for(i=5; i>=1; i--){
+      for(j=1; j<=10; j++){
+        if(i == j || i == 11-j){
           System.out.printf("X");
         }else{
           System.out.printf(".");
