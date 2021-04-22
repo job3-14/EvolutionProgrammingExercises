@@ -1,8 +1,15 @@
+import java.util.Date;
 public class SeirekiToWarekiConverter{
   public static void main(String[] args){
-    Integer result;
+    Integer result, year;
     //System.out.println(args[0]);
-    Integer year = Integer.valueOf(args[0]);
+    if(args.length == 1){
+      year = Integer.valueOf(args[0]);
+    }else{
+      Date date = new Date();
+      year = date.getYear();
+      year += 1900;
+  }
     System.out.printf("西暦%d: ",year);
     if(year < 1868){
       System.out.printf("明治より前であるため判定できません%n");
