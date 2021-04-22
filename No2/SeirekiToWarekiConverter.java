@@ -1,8 +1,9 @@
 public class SeirekiToWarekiConverter{
   public static void main(String[] args){
     Integer result;
-    System.out.println(args[0]);
+    //System.out.println(args[0]);
     Integer year = Integer.valueOf(args[0]);
+    System.out.printf("西暦:%d",year);
     if(year < 1868){
       result = -1;
     }else if(year < 1912){
