@@ -5,7 +5,7 @@ public class SeirekiToWarekiConverter{
     Integer year = Integer.valueOf(args[0]);
     System.out.printf("西暦%d: ",year);
     if(year < 1868){
-      result = -1;
+      System.out.printf("明治より前であるため判定できません%n");
     }else if(year < 1912){
       result = year - 1867;
       if(year == 1868){
