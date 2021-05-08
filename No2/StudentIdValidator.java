@@ -1,6 +1,5 @@
 public class StudentIdValidator{
   void run(String[] args){
-    System.out.println(args[0]);  ///test
     validate(args[0]);
   }
 
@@ -10,11 +9,21 @@ public class StudentIdValidator{
     if(length1 != 6){
       System.exit(0);
     }
-    System.out.println(length1); ///test
-    intId = Integer.parseInt(id);
+    validateId(id);
 
+  }
 
-
+  void validateId(String id){
+    Integer i;
+    String tmpId;
+    Integer total = 0;
+    for(i=1;i<=6;i++){
+      tmpId = id.substring(i-1, i);
+      total += Integer.parseInt(tmpId);
+    }
+    if(total%10 == 0){
+      System.out.println(id + " valid");
+    }
   }
 
   public static void main(String[] args){
