@@ -5,12 +5,15 @@ public class StudentIdValidator{
   }
 
   void validate(String id){
-    Integer length1;
+    Integer length1, intId;
     length1 = id.length();
     if(length1 != 6){
       System.exit(0);
     }
     System.out.println(length1); ///test
+    intId = Integer.parseInt(id);
+
+
 
   }
 
