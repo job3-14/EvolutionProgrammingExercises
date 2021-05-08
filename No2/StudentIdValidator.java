@@ -1,0 +1,36 @@
+public class StudentIdValidator{
+  void run(String[] args){
+    validate(args[0]);
+  }
+
+  void validate(String id){
+    Integer length1, intId;
+    length1 = id.length();
+    if(length1 != 6){
+      System.out.println("not student id");
+      System.exit(0);
+    }
+    validateId(id);
+
+  }
+
+  void validateId(String id){
+    Integer i;
+    String tmpId;
+    Integer total = 0;
+    for(i=1;i<=6;i++){
+      tmpId = id.substring(i-1, i);
+      total += Integer.parseInt(tmpId);
+    }
+    if(total%10 == 0){
+      System.out.println(id + " valid");
+    }else{
+      System.out.println("invalid");
+    }
+  }
+
+  public static void main(String[] args){
+    StudentIdValidator application = new StudentIdValidator();
+    application.run(args);
+  }
+}
