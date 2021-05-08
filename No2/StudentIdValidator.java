@@ -7,6 +7,7 @@ public class StudentIdValidator{
     Integer length1, intId;
     length1 = id.length();
     if(length1 != 6){
+      System.out.println("not student id");
       System.exit(0);
     }
     validateId(id);
@@ -23,6 +24,8 @@ public class StudentIdValidator{
     }
     if(total%10 == 0){
       System.out.println(id + " valid");
+    }else{
+      System.out.println("invalid");
     }
   }
 
