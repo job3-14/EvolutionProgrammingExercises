@@ -25,6 +25,12 @@ public class QuadraticEquation{
     System.out.printf("answer = %f %f\n",result1, result2);
   }
 
+  //重解
+  void multipleSolution(Double inputA, Double inputB, Double inputC){
+    
+
+  }
+
   public static void main(String[] args){
     QuadraticEquation application = new QuadraticEquation();
     application.run(args);
