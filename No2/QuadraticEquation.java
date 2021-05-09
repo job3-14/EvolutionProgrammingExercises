@@ -15,6 +15,7 @@ public class QuadraticEquation{
     }
   }
 
+  //実数部計算
   void realNumberSolution(Double inputA, Double inputB, Double inputC){
     Double result1, result2, rootResult, root;
     root = inputB * inputB -1 * (4 * inputA * inputC);
