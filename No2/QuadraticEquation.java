@@ -7,7 +7,9 @@ public class QuadraticEquation{
   }
 
   void discriminant(Double inputA, Double inputB, Double inputC){
-    System.out.println(inputA);
+    Double discrimination;
+    discrimination = inputB * inputB -(4 * inputA * inputC);
+    System.out.println(discrimination);
   }
 
   public static void main(String[] args){
