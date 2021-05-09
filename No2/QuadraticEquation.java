@@ -12,6 +12,8 @@ public class QuadraticEquation{
     //System.out.println(discrimination); //rootResult
     if(discrimination > 0){
       realNumberSolution(inputA, inputB, inputC);
+    }else if(discrimination == 0){
+      multipleSolution(inputA, inputB, inputC);
     }
   }
 
@@ -27,8 +29,11 @@ public class QuadraticEquation{
 
   //重解
   void multipleSolution(Double inputA, Double inputB, Double inputC){
-    
-
+    Double result1, rootResult, root;
+    root = inputB * inputB -1 * (4 * inputA * inputC);
+    rootResult = Math.sqrt(root);
+    result1 = (-1 * inputB + rootResult) / 2 * inputA;
+    System.out.printf("answer = %f\n",result1);
   }
 
   public static void main(String[] args){
