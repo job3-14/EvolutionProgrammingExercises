@@ -36,6 +36,12 @@ public class QuadraticEquation{
     System.out.printf("answer = %f\n",result1);
   }
 
+  //虚数解
+  void imaginarySolution(Double inputA, Double inputB, Double inputC){
+    
+  }
+
+
   public static void main(String[] args){
     QuadraticEquation application = new QuadraticEquation();
     application.run(args);
