@@ -14,6 +14,8 @@ public class QuadraticEquation{
       realNumberSolution(inputA, inputB, inputC);
     }else if(discrimination == 0){
       multipleSolution(inputA, inputB, inputC);
+    }else{
+      imaginarySolution(inputA, inputB, inputC);
     }
   }
 
@@ -38,7 +40,12 @@ public class QuadraticEquation{
 
   //虚数解
   void imaginarySolution(Double inputA, Double inputB, Double inputC){
-    
+    Double real, imaginary, minusImaginary , root, result1, result2;
+    real = -1 * inputB / 2 * inputA;
+    root = Math.sqrt(-1 * ( inputB * inputB -1 *(4 * inputA * inputC)));
+    imaginary = root / 2 * inputA;
+    minusImaginary = -1 * (root / 2 * inputA);
+    System.out.printf("result = %f + %f i , %f - %f i \n",real,imaginary,real,imaginary);
   }
 
 
