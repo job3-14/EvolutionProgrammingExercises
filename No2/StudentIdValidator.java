@@ -11,10 +11,9 @@ public class StudentIdValidator{
     length1 = id.length();
     if(length1 != 6){
       System.out.printf(id + ": not student\n");
-      System.exit(0);
+      return;
     }
     validateId(id);
-
   }
 
   void validateId(String id){
