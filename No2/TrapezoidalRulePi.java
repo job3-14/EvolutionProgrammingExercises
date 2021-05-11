@@ -19,7 +19,7 @@ public class TrapezoidalRulePi{
       lastHight = hight;
     }
     result = total * 4;
-    System.out.printf("pi = %f\n",result);
+    System.out.printf("pi = %.10f\n",result);
   }
 
   public static void main(String[] args){
