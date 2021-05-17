@@ -1,17 +1,27 @@
 import java.util.ArrayList;
 public class Primes{
   void run(String[] args){
-    Integer number;
+    Integer number,i,count=1;
+    ArrayList<Integer> primesList = new ArrayList<>();
     if(args.length == 1){
       number = Integer.valueOf(args[0]);
     }else{
       number = 200;
   }
-  calculation(number);
+  primesList = calculation(number);
+  for(i=1;i<primesList.size();i++){
+    System.out.printf("%4d ",primesList.get(i));
+    count++;
+    if(count%11 == 0){
+      System.out.printf("\n");
+      count = 1;
+    }
+  }
+  System.out.printf("\n");
     }
 
-  void calculation(Integer number){
-    Integer i,j,k,tmp,lastPrime, count=1;
+  ArrayList<Integer> calculation(Integer number){
+    Integer i,j,k,tmp,lastPrime, count;
     ArrayList<Boolean> list = new ArrayList<>();
     ArrayList<Integer> primesList = new ArrayList<>();
     primesList.add(1);
@@ -32,17 +42,7 @@ public class Primes{
         }
       }
     }
-
-    for(i=1;i<primesList.size();i++){
-      System.out.printf("%4d ",primesList.get(i));
-      count++;
-      if(count%11 == 0){
-        System.out.printf("\n");
-        count = 1;
-      }
-    }
-    System.out.printf("\n");
-
+    return primesList;
   }
 
 
