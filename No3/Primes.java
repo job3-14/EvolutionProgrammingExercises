@@ -20,7 +20,7 @@ public class Primes{
     }
     for(i=2;i<=number;i++){
       lastPrime = primesList.get(primesList.size()-1);
-      for(j=lastPrime+1;j<number;j++){
+      for(j=lastPrime+1;j<=number;j++){
         if(list.get(j)==true){
           primesList.add(j);
           for(k=j;k<=number;k++){ //素数の倍数除外
