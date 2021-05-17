@@ -11,7 +11,7 @@ public class Primes{
     }
 
   void calculation(Integer number){
-    Integer i,j,k,tmp,lastPrime;
+    Integer i,j,k,tmp,lastPrime, count=1;
     ArrayList<Boolean> list = new ArrayList<>();
     ArrayList<Integer> primesList = new ArrayList<>();
     primesList.add(1);
@@ -22,16 +22,27 @@ public class Primes{
       lastPrime = primesList.get(primesList.size()-1);
       for(j=lastPrime+1;j<number;j++){
         if(list.get(j)==true){
-          for(k=j;k<=number;k++){
+          primesList.add(j);
+          for(k=j;k<=number;k++){ //素数の倍数除外
             if(k%j == 0){
               list.set(k, false);
             }
           }
           break;
         }
-
       }
     }
+
+    for(i=1;i<primesList.size();i++){
+      System.out.printf("%4d ",primesList.get(i));
+      count++;
+      if(count%11 == 0){
+        System.out.printf("\n");
+        count = 1;
+      }
+    }
+    System.out.printf("\n");
+
   }
 
 
