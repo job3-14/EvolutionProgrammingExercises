@@ -10,7 +10,7 @@ public class DrawShapes2{
     EZLine line3 = EZ.addLine(200, 350, 350, 200, Color.LIGHT_GRAY);
     EZLine line4 = EZ.addLine(350, 200, 200, 50, Color.ORANGE);
   }
-  // mainメソッドは省略．
+
   public static void main(String[] args){
     DrawShapes2 application = new DrawShapes2();
     application.run();
