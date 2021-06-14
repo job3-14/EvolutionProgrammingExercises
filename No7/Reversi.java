@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.lang.Math;
 
 public class Reversi{
   void run(String[] args){
