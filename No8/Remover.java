@@ -9,6 +9,13 @@ public class Remover{
   }
 
   void delete(File dir){
+    if(dir.isDirectory()){
+      File[] files = dir.listFiles();
+      for(File f: files){
+        f.delete();
+        this.delete(f);
+      }
+    }
     dir.delete();
   }
 
