@@ -14,9 +14,9 @@ public class FileCounter{
       }else{
         fileCount ++;
       }
-
+    System.out.printf("%s%n",f.getName());
     }
-
+    System.out.printf("file: %d, dir: %d%n",fileCount, directoryCount);
   }
 
 
