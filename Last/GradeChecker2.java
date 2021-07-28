@@ -8,52 +8,42 @@ import java.util.ArrayList;
 public class GradeChecker2{
   void run(String[] args)throws IOException{
     Integer i;
+    HashMap<Integer, Double> examMap = new HashMap<>();
+    ArrayList<Integer> assignmentsList = new ArrayList<>();
+    ArrayList<Integer> miniexamList = new ArrayList<>();
     for(i=0; i<args.length; i+=3){
-      if(args.length != 0){
-        File fileExam = new File(args[i]);
-        File fileAssignments = new File(args[i+1]);
-        File fileMiniexam = new File(args[i+2]);
-        //exam(fileExam);
-        //assignments(fileAssignments);
-        miniexam(fileMiniexam);
-      }
+      File fileExam = new File(args[i]);
+      File fileAssignments = new File(args[i+1]);
+      File fileMiniexam = new File(args[i+2]);
+      examMap = exam(fileExam);
+      assignmentsList = assignments(fileAssignments);
+      miniexamList = miniexam(fileMiniexam);
+      total(examMap,assignmentsList,miniexamList);
     }
   }
 
-  void exam(File file)throws IOException{
+  HashMap<Integer, Double> exam(File file)throws IOException{
     String readData;
     String[] splitdata;
     Integer lastNumber=0,i;
     HashMap<Integer, Double> point = new HashMap<>();
-    HashMap<Integer, String> grade = new HashMap<>();
     FileReader fileReader = new FileReader(file);
     BufferedReader reader = new BufferedReader(fileReader);
     while ((readData = reader.readLine()) != null) {
       splitdata = readData.split(",");
       point.put(Integer.parseInt(splitdata[0]),Double.parseDouble(splitdata[1]));
+      lastNumber = Integer.parseInt(splitdata[0]);
     }
-    lastNumber = point.size();
     for(i=1; i<=lastNumber; i++){
       if(!point.containsKey(i)){
-        point.put(i,0.000);
-        grade.put(i,"K");
-      }else if(point.get(i) < 60){
-        grade.put(i,"不可");
-      }else if(point.get(i) < 70){
-        grade.put(i,"可");
-      }else if(point.get(i) < 80){
-        grade.put(i,"良");
-      }else if(point.get(i) < 90){
-        grade.put(i,"優");
-      }else{
-        grade.put(i,"秀");
+        point.put(i,-1.0);
       }
-      //System.out.println(i+","+String.format("%.3f", point.get(i))+","+grade.get(i));///////////////
     }
     reader.close();
+    return point;
   }
 
-  void assignments(File file)throws IOException{
+  ArrayList<Integer> assignments(File file)throws IOException{
     String readData;
     String[] splitdata;
     Integer pointTmp,i,currentId;
@@ -71,9 +61,10 @@ public class GradeChecker2{
       pointList.add(pointTmp);
     }
     reader.close();
+    return pointList;
   }
 
-  void miniexam(File file)throws IOException{
+  ArrayList<Integer> miniexam(File file)throws IOException{
     String readData;
     String[] splitdata;
     Integer rateTmp,i,countId=1,currentId;
@@ -99,6 +90,41 @@ public class GradeChecker2{
       rateList.add(rateTmp);
     }
     reader.close();
+    return rateList;
+  }
+
+  void total(HashMap<Integer, Double> examMap,ArrayList<Integer> assignmentsList,ArrayList<Integer> miniexam){
+    Integer totalcount,score,i;
+    Double doubleScore;
+    String grade;
+    totalcount = examMap.size();
+    for(i=1;i<=totalcount;i++){
+      doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
+      score = (int)Math.ceil(doubleScore);
+      if(examMap.get(i)==-1.0){
+        grade = "K";
+        doubleScore = 25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
+        score = (int)Math.ceil(doubleScore);
+        System.out.println(i+","+score+","+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
+      }else{
+        doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
+        score = (int)Math.ceil(doubleScore);
+        if(score < 60){
+          grade = "不可";
+        }else if(score < 70){
+          grade = "可";
+        }else if(score < 80){
+          grade = "良";
+        }else if(score < 90){
+          grade = "優";
+        }else{
+          grade = "秀";
+        }
+      System.out.println(i+","+score+","+String.format("%.3f",examMap.get(i))+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
+      }
+
+
+    }
   }
 
 
