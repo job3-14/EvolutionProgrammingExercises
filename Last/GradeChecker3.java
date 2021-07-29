@@ -108,8 +108,6 @@ public class GradeChecker3{
     gradeMap.put("K",0);
     totalcount = examMap.size();
     for(i=1;i<=totalcount;i++){
-      doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
-      score = (int)Math.ceil(doubleScore);
       if(examMap.get(i)==-1.0){
         grade = "K";
         gradeMap.put(grade,gradeMap.get(grade)+1);
