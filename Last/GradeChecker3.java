@@ -98,13 +98,21 @@ public class GradeChecker3{
     Double doubleScore;
     String grade;
     ArrayList<Integer> totalList = new ArrayList<>();
-    ArrayList<Integer> passist = new ArrayList<>();
+    ArrayList<Integer> passList = new ArrayList<>();
+    HashMap<String, Integer> gradeMap = new HashMap<>();
+    gradeMap.put("秀",0);
+    gradeMap.put("優",0);
+    gradeMap.put("良",0);
+    gradeMap.put("可",0);
+    gradeMap.put("不可",0);
+    gradeMap.put("K",0);
     totalcount = examMap.size();
     for(i=1;i<=totalcount;i++){
       doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
       score = (int)Math.ceil(doubleScore);
       if(examMap.get(i)==-1.0){
         grade = "K";
+        gradeMap.put(grade,gradeMap.get(grade)+1);
         doubleScore = 25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
         score = (int)Math.ceil(doubleScore);
         System.out.println(i+","+score+","+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
@@ -123,14 +131,16 @@ public class GradeChecker3{
         }else{
           grade = "秀";
         }
+        gradeMap.put(grade,gradeMap.get(grade)+1);
         System.out.println(i+","+score+","+String.format("%.3f",examMap.get(i))+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
         if(score >= 60){
-          passist.add(score);
+          passList.add(score);
         }
         totalList.add(score);
       }
     }
-    statistics(totalList,passist);
+    statistics(totalList,passList);
+    totalGrade(gradeMap);
   }
 
   void statistics(ArrayList<Integer> totalList, ArrayList<Integer> passList){
@@ -180,6 +190,16 @@ public class GradeChecker3{
     System.out.println("Avg: "+String.format("%.3f",statisticsMap.get("totalAvg"))+" ("+String.format("%.3f",statisticsMap.get("passAvg"))+")");
     System.out.println("Max: "+String.format("%.3f",statisticsMap.get("totalMax"))+" ("+String.format("%.3f",statisticsMap.get("passMax"))+")");
     System.out.println("Min: "+String.format("%.3f",statisticsMap.get("totalMin"))+" ("+String.format("%.3f",statisticsMap.get("passMin"))+")");
+  }
+
+  void totalGrade(HashMap<String, Integer> gradeMap){
+    System.out.println("秀:   "+gradeMap.get("秀"));
+    System.out.println("優:   "+gradeMap.get("優"));
+    System.out.println("良:   "+gradeMap.get("良"));
+    System.out.println("可:   "+gradeMap.get("可"));
+    System.out.println("不可: "+gradeMap.get("不可"));
+    System.out.println("K:    "+gradeMap.get("K"));
+
   }
 
 
