@@ -1,3 +1,4 @@
+//053471 酒井歩夢
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -106,6 +107,7 @@ public class GradeChecker4{
     gradeMap.put("可",0);
     gradeMap.put("不可",0);
     gradeMap.put("K",0);
+    gradeMap.put("※",0);
     totalcount = examMap.size();
     for(i=1;i<=totalcount;i++){
       if(examMap.get(i)==-1.0){
@@ -116,11 +118,17 @@ public class GradeChecker4{
         System.out.println(i+","+score+","+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
         totalList.add(score);
       }else{
-        doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*assignmentsList.get(i-1)+5.0*miniexam.get(i-1)/14.0;
+        doubleScore = 70.0/100.0*examMap.get(i)+25.0/60.0*(double)assignmentsList.get(i-1)+5.0*(double)miniexam.get(i-1)/14.0;
         score = (int)Math.ceil(doubleScore);
-        //if(socre<=80 && )
+        if(Math.ceil(examMap.get(i))>=80 && score<=Math.ceil(examMap.get(i))){
+          score = (int)Math.ceil(examMap.get(i));
+        }
         if(score < 60){
-          grade = "不可";
+          if(miniexam.get(i-1)<=7){
+            grade = "※";
+          }else{
+            grade = "不可";
+          }
         }else if(score < 70){
           grade = "可";
         }else if(score < 80){
@@ -139,7 +147,13 @@ public class GradeChecker4{
       }
     }
     statistics(totalList,passList);
-    totalGrade(gradeMap);
+    System.out.println("秀:   "+gradeMap.get("秀"));
+    System.out.println("優:   "+gradeMap.get("優"));
+    System.out.println("良:   "+gradeMap.get("良"));
+    System.out.println("可:   "+gradeMap.get("可"));
+    System.out.println("不可: "+gradeMap.get("不可"));
+    System.out.println("K:    "+gradeMap.get("K"));
+    System.out.println("※:    "+gradeMap.get("※"));
   }
 
   void statistics(ArrayList<Integer> totalList, ArrayList<Integer> passList){
@@ -190,17 +204,6 @@ public class GradeChecker4{
     System.out.println("Max: "+String.format("%.3f",statisticsMap.get("totalMax"))+" ("+String.format("%.3f",statisticsMap.get("passMax"))+")");
     System.out.println("Min: "+String.format("%.3f",statisticsMap.get("totalMin"))+" ("+String.format("%.3f",statisticsMap.get("passMin"))+")");
   }
-
-  void totalGrade(HashMap<String, Integer> gradeMap){
-    System.out.println("秀:   "+gradeMap.get("秀"));
-    System.out.println("優:   "+gradeMap.get("優"));
-    System.out.println("良:   "+gradeMap.get("良"));
-    System.out.println("可:   "+gradeMap.get("可"));
-    System.out.println("不可: "+gradeMap.get("不可"));
-    System.out.println("K:    "+gradeMap.get("K"));
-
-  }
-
 
 
   public static void main(String[] args)throws IOException{

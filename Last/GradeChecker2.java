@@ -1,3 +1,4 @@
+//053471 酒井歩夢
 import java.io.File;
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -118,7 +119,7 @@ public class GradeChecker2{
         }else{
           grade = "秀";
         }
-      System.out.println(i+","+score+","+String.format("%.3f",examMap.get(i))+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
+        System.out.println(i+","+score+","+String.format("%.3f",examMap.get(i))+","+assignmentsList.get(i-1)+","+miniexam.get(i-1)+","+grade);
       }
 
 
